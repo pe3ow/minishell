@@ -4,7 +4,7 @@ CC = gcc
 CFLAGS = -Wall -Wextra -Werror -fsanitize=address -lreadline
 
 
-SRC = main.c utils.c tokenizer.c Libft/ft_atoi.c Libft/ft_bzero.c Libft/ft_calloc.c \
+SRC = main.c utils2.c utils.c tokenizer.c Libft/ft_atoi.c Libft/ft_bzero.c Libft/ft_calloc.c \
 	Libft/ft_isalnum.c Libft/ft_isalpha.c Libft/ft_isascii.c \
 	Libft/ft_isdigit.c Libft/ft_isprint.c Libft/ft_itoa.c \
 	Libft/ft_lstadd_back_bonus.c Libft/ft_lstadd_front_bonus.c \
@@ -19,7 +19,8 @@ SRC = main.c utils.c tokenizer.c Libft/ft_atoi.c Libft/ft_bzero.c Libft/ft_callo
 	Libft/ft_strlcat.c Libft/ft_strlcpy.c Libft/ft_strlen.c \
 	Libft/ft_strmapi.c Libft/ft_strncmp.c Libft/ft_strnstr.c \
 	Libft/ft_strrchr.c Libft/ft_strtrim.c Libft/ft_substr.c \
-	Libft/ft_tolower.c Libft/ft_toupper.c
+	Libft/ft_tolower.c Libft/ft_toupper.c Libft/ft_freetab.c Libft/ft_tablen.c \
+	Libft/ft_strcmp.c
 
 OBJ = $(SRC:.c=.o)
 

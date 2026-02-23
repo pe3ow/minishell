@@ -6,7 +6,7 @@
 /*   By: lbardet- <lbardet-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/10 23:47:58 by lbardet-          #+#    #+#             */
-/*   Updated: 2026/02/13 10:15:49 by lbardet-         ###   ########.fr       */
+/*   Updated: 2026/02/21 04:07:25 by lbardet-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ int	main(void)
 				free(tokens->value);
 			}
 			else
-				printf("Error: %d", tokens->code);
+				printf("Error: %d\n", tokens->code);
 			free(tokens);
 		}
 		free(input);
