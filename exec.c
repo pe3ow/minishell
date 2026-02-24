@@ -6,7 +6,7 @@
 /*   By: lbardet- <lbardet-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/23 21:33:20 by lbardet-          #+#    #+#             */
-/*   Updated: 2026/02/23 22:02:48 by lbardet-         ###   ########.fr       */
+/*   Updated: 2026/02/24 20:19:49 by lbardet-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ int	monitor(t_cmd **cmd_array, t_token **args, char **envp)
 		return (exec_external(args, cmd_array[0], envp));
 }
 
-void	is_builtin(t_token **args, char *cmd)
+void	exec_builtin(t_token **args, char *cmd)
 {
 	if (ft_strcmp(cmd, "echo") == 0)
 		return (echo(args[0]));
@@ -35,7 +35,9 @@ void	is_builtin(t_token **args, char *cmd)
 	else if (ft_strcmp(cmd, "env") == 0)
 		return (env);
 	else if (ft_strcmp(cmd, "exit") == 0)
-		return (exit);
+		return (builtin_exit);
 	else
 		return (NULL);
 }
+
+int	

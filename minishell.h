@@ -6,7 +6,7 @@
 /*   By: lbardet- <lbardet-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/10 23:35:23 by lbardet-          #+#    #+#             */
-/*   Updated: 2026/02/19 23:09:23 by lbardet-         ###   ########.fr       */
+/*   Updated: 2026/02/24 19:33:02 by lbardet-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,14 @@
 # include <unistd.h>
 
 //====INCLUDE-STRUCTURE====//
+
+typedef struct s_env // structure pour stocker les variables d'environnement dans une liste chaînée
+{
+    char            *key;
+    char            *value;
+    struct s_env    *next;
+}   t_env;
+
 typedef enum s_token_type
 {
 	TOKN_WORD,
@@ -68,15 +76,25 @@ int			ft_isspace(int c);
 void		free_tab(char **str_tab);
 int			count_words(char *str);
 int			check_quotes(char *str);
+char		*get_env_value(t_env *env, char *key);
+int			set_env(t_env **env, char *key, char *value);
 //==tokenizer==//
 t_token		*tokenizer(char *input);
 //==parse==//
 t_cmd		*parse_tokens(t_token *tokens, int token_count);
-//
 t_cmd		**parse_pipeline(t_token *tokens, int token_count);
-//
 char		**extract_args(t_token *tokens, int start, int end);
-//
 //==commands==//
+int			cd(t_cmd *cmd, char **env);
+int			pwd(void);
+void		echo(char *str);
+int			export(t_cmd *cmd, char **env);
+int			unset(t_cmd *cmd, char **env);
+int			builtin_exit(t_cmd *cmd, char **env);
+int			env(t_cmd *cmd, char **env);
+//==exec==//
+int			monitor(t_cmd **cmd_array, t_token **args, char **envp);
+int			exec_builtin(t_token **args, char *cmd);
+int			exec_external(t_token **args, t_cmd *cmd, char **envp);
 
 #endif
